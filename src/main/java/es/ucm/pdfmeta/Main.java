@@ -33,7 +33,11 @@ import static es.ucm.pdfmeta.model.MetadataModel.TITLE_PROPERTY_NAME;
 import es.ucm.pdfmeta.model.MetadataProperty;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 
 /**
@@ -45,6 +49,8 @@ public class Main {
         PDDocument doc = null;
         try {
             if (args.length > 0) {
+                UIManager.setLookAndFeel(
+                    UIManager.getSystemLookAndFeelClassName());
                 for (String arg : args) {
                     File f = new File(arg);
                     doc = PDDocument.load(f);
@@ -62,6 +68,8 @@ public class Main {
             }
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(null, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             if (doc != null) try { doc.close(); } catch (IOException ex) {}
         }
