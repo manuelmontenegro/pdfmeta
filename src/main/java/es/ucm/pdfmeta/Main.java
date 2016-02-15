@@ -49,8 +49,7 @@ public class Main {
         PDDocument doc = null;
         try {
             if (args.length > 0) {
-                UIManager.setLookAndFeel(
-                    UIManager.getSystemLookAndFeelClassName());
+                UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");
                 for (String arg : args) {
                     File f = new File(arg);
                     doc = PDDocument.load(f);

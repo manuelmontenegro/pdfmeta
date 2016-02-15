@@ -217,6 +217,7 @@ public class MainDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Edit PDF Metadata");
+        setLocationByPlatform(true);
 
         dataPanel.setLayout(new java.awt.GridBagLayout());
 
